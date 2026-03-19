@@ -73,6 +73,9 @@ export default function Module5Page() {
   const [scores, setScores] = useState<Record<number, number>>({});
   const [showHints, setShowHints] = useState<Record<number, boolean>>({});
   const [studentInputName, setStudentInputName] = useState(progress.studentName || "");
+  const [studentEmail, setStudentEmail] = useState("");
+  const [submissionSuccess, setSubmissionSuccess] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const allSubmitted = challenges.every(c => submitted[c.id]);
   const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
@@ -80,11 +83,32 @@ export default function Module5Page() {
   const passed = allSubmitted && totalScore >= maxScore * 0.7;
   const alreadyCertified = progress.certificateEarned;
 
-  const handleGetCertificate = () => {
+  const handleGetCertificate = async () => {
     if (studentInputName.trim()) {
+      setIsSubmitting(true);
+      try {
+        const response = await fetch("/api/certification", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            studentName: studentInputName.trim(),
+            email: studentEmail || "No email provided",
+            score: totalScore,
+            maxScore,
+            challengeAnswers: answers,
+          }),
+        });
+        const result = await response.json();
+        if (result.success) {
+          setSubmissionSuccess(true);
+        }
+      } catch (error) {
+        console.error("Submission error:", error);
+      }
       setStudentName(studentInputName.trim());
       earnCertificate();
       completeModule(5);
+      setIsSubmitting(false);
     }
   };
 
@@ -127,20 +151,33 @@ export default function Module5Page() {
             
             {!progress.studentName ? (
               <div className="mb-8">
-                <p className="text-slate-300 mb-4">Enter your name to generate your certificate:</p>
+                {submissionSuccess && (
+                  <div className="mb-6 p-4 bg-green-500/20 border border-green-500/40 rounded-lg">
+                    <p className="text-green-400 font-semibold">✓ Submission Successful - Envío Exitoso</p>
+                    <p className="text-slate-300 text-sm">Your certification has been recorded.</p>
+                  </div>
+                )}
+                <p className="text-slate-300 mb-4">Ingresa tu nombre y correo para generar tu certificado:</p>
                 <input
                   type="text"
                   value={studentInputName}
                   onChange={(e) => setStudentInputName(e.target.value)}
-                  placeholder="Your Full Name"
-                  className="w-full max-w-md px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white text-center text-lg focus:border-amber-500 focus:outline-none"
+                  placeholder="Tu Nombre Completo"
+                  className="w-full max-w-md px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white text-center text-lg focus:border-amber-500 focus:outline-none mb-3"
+                />
+                <input
+                  type="email"
+                  value={studentEmail}
+                  onChange={(e) => setStudentEmail(e.target.value)}
+                  placeholder="tu@email.com"
+                  className="w-full max-w-md px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white text-center text-lg focus:border-amber-500 focus:outline-none mb-4"
                 />
                 <button
                   onClick={handleGetCertificate}
-                  disabled={!studentInputName.trim()}
-                  className="mt-4 px-8 py-3 bg-amber-500 text-slate-900 font-bold rounded-lg hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                  disabled={!studentInputName.trim() || isSubmitting}
+                  className="mt-2 px-8 py-3 bg-amber-500 text-slate-900 font-bold rounded-lg hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
-                  Generate Certificate
+                  {isSubmitting ? "Enviando..." : "Generar Certificado"}
                 </button>
               </div>
             ) : (

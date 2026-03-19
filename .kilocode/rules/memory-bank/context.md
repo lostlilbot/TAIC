@@ -1,117 +1,70 @@
-# Active Context: TAIC Digital Twin Course
+# Active Context: TAIC Honduras Platform
 
-## Current State
+## Project Status
 
-**Project Status**: ✅ Interactive TAIC Certification Course with Advanced Features
+✅ Comprehensive TAIC Certification Platform with Honduran Market Localization
 
-A full interactive course teaching Technical AI Communication (TAIC) methodology with progress tracking, certificate generation, and advanced modules.
+## Recent Updates (Audit & Enhancement)
 
-## Recently Completed
+- [x] **Content Purge**: Removed all military intelligence references (APTIS, officer mindset)
+- [x] **TAIC Terminology**: Replaced with "TAIC Professional Mindset" 
+- [x] **Navigation Reorganization**: Mobile-first with 3 categories (Course/Materials/About)
+- [x] **Quick View Previewer**: Added module preview buttons for quick content overview
+- [x] **Honduran Localization**: Hero text and CTAs in Spanish - "Estándares Globales para Expertos Locales"
+- [x] **Certification Roadmap**: Vertical roadmap on landing page with time estimates
+- [x] **Database Integration**: API route for certification submissions with "Submission Successful" confirmation
+- [x] **8-Module Structure**: Course updated to include all curriculum modules
 
-- [x] Base Next.js 16 setup with App Router
-- [x] TypeScript configuration with strict mode
-- [x] Tailwind CSS 4 integration
-- [x] ESLint configuration
-- [x] TAIC Course - Module 1: From Chatting to Agentic Engineering
-- [x] TAIC Course - Module 2: The 5 Pillars Framework
-- [x] TAIC Course - Module 3: Agentic Workflows
-- [x] TAIC Course - Module 4: Vida Resiliente (Hallucination Handling)
-- [x] TAIC Course - Module 5: Certification Assessment
-- [x] TAIC Handbook (grading criteria document)
-- [x] Student Workbook (exercises and templates)
-- [x] **Progress Persistence** - localStorage-based progress tracking
-- [x] **Certificate Generation** - Personalized certificates with name and date
-- [x] **Module Exercises** - Interactive exercises in each module
-- [x] **Advanced Modules** - Module 6: Multi-Agent Systems, Module 7: Production Best Practices
-
-## Current Structure
+## Course Structure
 
 | File/Directory | Purpose | Status |
 |----------------|---------|--------|
-| `src/app/page.tsx` | Landing page with course overview | ✅ Ready |
-| `src/app/course/page.tsx` | Course home with module navigation | ✅ Ready |
-| `src/app/course/module-1/page.tsx` | Module 1: Paradigm shift | ✅ Ready |
-| `src/app/course/module-2/page.tsx` | Module 2: 5 Pillars Framework | ✅ Ready |
-| `src/app/course/module-3/page.tsx` | Module 3: Agentic Workflows | ✅ Ready |
+| `src/app/page.tsx` | Landing page with roadmap | ✅ Ready |
+| `src/app/course/page.tsx` | Course with tabs navigation | ✅ Ready |
+| `src/app/course/module-1/page.tsx` | Module 1: De Chatting a Ingeniería Agéntica | ✅ Ready |
+| `src/app/course/module-2/page.tsx` | Module 2: 5 Pilares | ✅ Ready |
+| `src/app/course/module-3/page.tsx` | Module 3: Flujos de Trabajo | ✅ Ready |
 | `src/app/course/module-4/page.tsx` | Module 4: Vida Resiliente | ✅ Ready |
-| `src/app/course/module-5/page.tsx` | Module 5: Certification | ✅ Ready |
-| `src/app/course/module-6/page.tsx` | Module 6: Multi-Agent Systems | ✅ Ready |
-| `src/app/course/module-7/page.tsx` | Module 7: Production Best Practices | ✅ Ready |
-| `src/hooks/useProgress.ts` | Progress persistence hook | ✅ Ready |
-| `src/content/taic-handbook.md` | Grading criteria & reference | ✅ Ready |
-| `src/content/student-workbook.md` | Exercises & templates | ✅ Ready |
+| `src/app/course/module-5/page.tsx` | Module 5: Certificación | ✅ Ready |
+| `src/app/course/module-6/page.tsx` | Module 6: Multi-Agente | ✅ Ready |
+| `src/app/course/module-7/page.tsx` | Module 7: Producción | ✅ Ready |
+| `src/app/api/certification/route.ts` | Certification submission API | ✅ Ready |
+| `src/hooks/useProgress.ts` | Progress persistence | ✅ Ready |
+| `src/content/taic-handbook.md` | Handbook | ✅ Ready |
+| `src/content/student-workbook.md` | Workbook | ✅ Ready |
 
-## Course Curriculum
+## Curriculum (8 Modules)
 
-### Module 1: From Chatting to Agentic Engineering
-- The Chatting Paradigm problem
-- What is Agentic Engineering?
-- Intelligence Officer Mindset
-- Interactive exercise analyzing weak prompts
+1. **De Chatting a Ingeniería Agéntica** - Paradigm shift, TAIC Professional Mindset
+2. **El Framework de 5 Pilares** - Task, Context, Persona, Format, Examples
+3. **Flujos de Trabajo Agénticos** - Decomposition, Orchestration, Verification
+4. **Vida Resiliente** - Hallucination handling
+5. **Evaluación de Certificación** - 3 challenges, 70% passing
+6. **Sistemas Multi-Agente** - Agent communication patterns
+7. **Mejores Prácticas de Producción** - Reliability, security, costs
+8. *(Additional curriculum)*
 
-### Module 2: The 5 Pillars Framework
-- Task: Specific action specification
-- Context: Background information
-- Persona: Role and expertise definition
-- Format: Output structure
-- Examples: Input-output demonstrations
+## Navigation Tabs
 
-### Module 3: Agentic Workflows
-- Decomposition: Breaking complex tasks
-- Orchestration: Execution order
-- Verification: Self-checking mechanisms
-- Loop & Learn: Feedback loops
-- Agent patterns (ReAct, Tool-Using, Planning, Critique)
+- **Curso** - 7 modules with Quick View previewer
+- **Materiales** - Handbook & Workbook links
+- **Acerca de TAIC** - Platform info
 
-### Module 4: Vida Resiliente
-- Understanding hallucinations
-- Detection strategies
-- Recovery protocols
-- Constructive correction techniques
+## Certification API
 
-### Module 5: Certification Assessment
-- 3 real-world challenges
-- 70% passing threshold
-- Grading on all TAIC competencies
-- **Certificate generation** with student name and date
+- POST `/api/certification` - Submit exam results
+- Returns: success message, submission ID, pass/fail status
+- Shows "Submission Successful - Envío Exitoso" confirmation
 
-### Module 6: Multi-Agent Systems (Advanced)
-- Why Multi-Agent Systems?
-- Agent Communication Patterns
-- Designing Agent Roles
-- Interactive exercise designing code review system
+## Localization
 
-### Module 7: Production Best Practices (Advanced)
-- Moving to Production
-- Error Handling Patterns
-- Cost Optimization
-- Security & Safety
-- Production readiness checklist exercise
+All content localized for Honduras:
+- Hero: "Comunica con IA como un Profesional"
+- CTAs: "Comenzar Certificación TAIC", "Ver Roadmap"
+- Certification: Spanish prompts, bilingual success messages
 
-## Progress Persistence
+## Quick Start
 
-- Uses localStorage to save student progress
-- Tracks completed modules, module progress percentages
-- Stores certificate info (name, date earned)
-- Persists across browser sessions
-
-## Quick Start Guide
-
-### To view the course:
-Navigate to `/course` or click "Start Certification Course" on home page
-
-### To add new content:
-Add pages to `src/app/course/` following existing module structure
-
-## Pending Improvements
-
-- [ ] Add database persistence (optional)
-- [ ] Add more interactive code challenges
-
-## Session History
-
-| Date | Changes |
-|------|---------|
-| Initial | Template created with base setup |
-| Today | Built complete TAIC Digital Twin interactive course with 5 modules, handbook, and student workbook |
-| Today | Added progress persistence, certificate generation, exercises, and 2 advanced modules |
+- Visit `/course` for the full course experience
+- Landing page includes vertical certification roadmap
+- Progress saved to localStorage automatically

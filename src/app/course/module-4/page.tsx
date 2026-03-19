@@ -45,7 +45,7 @@ const sections = [
     </div>
     <div>
       <h4 class="text-white font-semibold">Build Error Recovery Into Your Workflows</h4>
-      <p class="text-slate-400 text-sm">Intelligence officers have contingency plans. So should your AI systems.</p>
+      <p class="text-slate-400 text-sm">TAIC professionals build robust systems with contingency plans. So should your AI workflows.</p>
     </div>
   </div>
 </div>`,

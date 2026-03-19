@@ -43,11 +43,11 @@ export default function Module1Page() {
         </div>
       </div>
 
-      <p class="mt-6 text-slate-300">Think of it like military logistics vs. asking a friend for directions. Engineering produces <span class="text-green-400">replicable, auditable results</span>.</p>`,
+      <p class="mt-6 text-slate-300">Think of it like professional engineering vs. asking a friend for help. Engineering produces <span class="text-green-400">replicable, auditable results</span>.</p>`,
     },
     {
-      title: "The Intelligence Officer Mindset",
-      content: `Your background as an intelligence officer isn't accidental to this methodology. Here's why:
+      title: "The TAIC Professional Mindset",
+      content: `Mastering TAIC requires adopting these core principles:
 
       <div class="mt-6 space-y-4">
         <div class="flex gap-4">
@@ -56,7 +56,7 @@ export default function Module1Page() {
           </div>
           <div>
             <h4 class="text-white font-semibold">Sourcing Matters</h4>
-            <p class="text-slate-400 text-sm">Intelligence officers know that source quality determines output quality. Garbage in, garbage out—doubly so with AI.</p>
+            <p class="text-slate-400 text-sm">TAIC professionals know that source quality determines output quality. Garbage in, garbage out—doubly so with AI.</p>
           </div>
         </div>
         <div class="flex gap-4">
@@ -74,7 +74,7 @@ export default function Module1Page() {
           </div>
           <div>
             <h4 class="text-white font-semibold">Precision Enables Action</h4>
-            <p class="text-slate-400 text-sm">"Move forces north" is useless. "Move 3 battalions to coordinates 14.5N, 90W by 0600" is actionable. Prompt engineering is about enabling AI action.</p>
+            <p class="text-slate-400 text-sm">"Process the data" is vague. "Validate CSV columns, transform dates to ISO format, insert into PostgreSQL orders table" is actionable. TAIC is about enabling AI action.</p>
           </div>
         </div>
       </div>`,
