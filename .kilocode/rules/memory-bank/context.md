@@ -1,10 +1,10 @@
-# Active Context: Next.js Starter Template
+# Active Context: TAIC Digital Twin Course
 
 ## Current State
 
-**Template Status**: ✅ Ready for development
+**Project Status**: ✅ Interactive TAIC Certification Course Built
 
-The template is a clean Next.js 16 starter with TypeScript and Tailwind CSS 4. It's ready for AI-assisted expansion to build any type of application.
+A full interactive course teaching Technical AI Communication (TAIC) methodology. Transforms students from basic "AI users" into "AI Architects" through 5 comprehensive modules.
 
 ## Recently Completed
 
@@ -12,76 +12,79 @@ The template is a clean Next.js 16 starter with TypeScript and Tailwind CSS 4. I
 - [x] TypeScript configuration with strict mode
 - [x] Tailwind CSS 4 integration
 - [x] ESLint configuration
-- [x] Memory bank documentation
-- [x] Recipe system for common features
+- [x] TAIC Course - Module 1: From Chatting to Agentic Engineering
+- [x] TAIC Course - Module 2: The 5 Pillars Framework
+- [x] TAIC Course - Module 3: Agentic Workflows
+- [x] TAIC Course - Module 4: Vida Resiliente (Hallucination Handling)
+- [x] TAIC Course - Module 5: Certification Assessment
+- [x] TAIC Handbook (grading criteria document)
+- [x] Student Workbook (exercises and templates)
 
 ## Current Structure
 
 | File/Directory | Purpose | Status |
 |----------------|---------|--------|
-| `src/app/page.tsx` | Home page | ✅ Ready |
-| `src/app/layout.tsx` | Root layout | ✅ Ready |
-| `src/app/globals.css` | Global styles | ✅ Ready |
-| `.kilocode/` | AI context & recipes | ✅ Ready |
+| `src/app/page.tsx` | Landing page with course overview | ✅ Ready |
+| `src/app/course/page.tsx` | Course home with module navigation | ✅ Ready |
+| `src/app/course/module-1/page.tsx` | Module 1: Paradigm shift | ✅ Ready |
+| `src/app/course/module-2/page.tsx` | Module 2: 5 Pillars Framework | ✅ Ready |
+| `src/app/course/module-3/page.tsx` | Module 3: Agentic Workflows | ✅ Ready |
+| `src/app/course/module-4/page.tsx` | Module 4: Vida Resiliente | ✅ Ready |
+| `src/app/course/module-5/page.tsx` | Module 5: Certification | ✅ Ready |
+| `src/content/taic-handbook.md` | Grading criteria & reference | ✅ Ready |
+| `src/content/student-workbook.md` | Exercises & templates | ✅ Ready |
 
-## Current Focus
+## Course Curriculum
 
-The template is ready. Next steps depend on user requirements:
+### Module 1: From Chatting to Agentic Engineering
+- The Chatting Paradigm problem
+- What is Agentic Engineering?
+- Intelligence Officer Mindset
+- Interactive exercise analyzing weak prompts
 
-1. What type of application to build
-2. What features are needed
-3. Design/branding preferences
+### Module 2: The 5 Pillars Framework
+- Task: Specific action specification
+- Context: Background information
+- Persona: Role and expertise definition
+- Format: Output structure
+- Examples: Input-output demonstrations
+
+### Module 3: Agentic Workflows
+- Decomposition: Breaking complex tasks
+- Orchestration: Execution order
+- Verification: Self-checking mechanisms
+- Loop & Learn: Feedback loops
+- Agent patterns (ReAct, Tool-Using, Planning, Critique)
+
+### Module 4: Vida Resiliente
+- Understanding hallucinations
+- Detection strategies
+- Recovery protocols
+- Constructive correction techniques
+
+### Module 5: Certification Assessment
+- 3 real-world challenges
+- 70% passing threshold
+- Grading on all TAIC competencies
 
 ## Quick Start Guide
 
-### To add a new page:
+### To view the course:
+Navigate to `/course` or click "Start Certification Course" on home page
 
-Create a file at `src/app/[route]/page.tsx`:
-```tsx
-export default function NewPage() {
-  return <div>New page content</div>;
-}
-```
-
-### To add components:
-
-Create `src/components/` directory and add components:
-```tsx
-// src/components/ui/Button.tsx
-export function Button({ children }: { children: React.ReactNode }) {
-  return <button className="px-4 py-2 bg-blue-600 text-white rounded">{children}</button>;
-}
-```
-
-### To add a database:
-
-Follow `.kilocode/recipes/add-database.md`
-
-### To add API routes:
-
-Create `src/app/api/[route]/route.ts`:
-```tsx
-import { NextResponse } from "next/server";
-
-export async function GET() {
-  return NextResponse.json({ message: "Hello" });
-}
-```
-
-## Available Recipes
-
-| Recipe | File | Use Case |
-|--------|------|----------|
-| Add Database | `.kilocode/recipes/add-database.md` | Data persistence with Drizzle + SQLite |
+### To add new content:
+Add pages to `src/app/course/` following existing module structure
 
 ## Pending Improvements
 
-- [ ] Add more recipes (auth, email, etc.)
-- [ ] Add example components
-- [ ] Add testing setup recipe
+- [ ] Add more module exercises
+- [ ] Add progress persistence (localStorage/database)
+- [ ] Add certificate generation
+- [ ] Add advanced modules (multi-agent systems, etc.)
 
 ## Session History
 
 | Date | Changes |
 |------|---------|
 | Initial | Template created with base setup |
+| Today | Built complete TAIC Digital Twin interactive course with 5 modules, handbook, and student workbook |
