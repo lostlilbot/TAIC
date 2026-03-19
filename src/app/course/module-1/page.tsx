@@ -3,14 +3,18 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useProgress } from "@/hooks/useProgress";
 
 export default function Module1Page() {
+  const { completeModule, updateModuleProgress, progress, isLoaded } = useProgress();
   const [lessonState, setLessonState] = useState({
     currentSection: 0,
     completedSections: [] as number[],
     exerciseAnswer: "",
     exerciseSubmitted: false,
     exerciseScore: 0,
+    improvedPrompt: "",
+    showImproved: false,
   });
   const router = useRouter();
 
@@ -113,10 +117,16 @@ export default function Module1Page() {
         ...lessonState,
         completedSections: [...lessonState.completedSections, lessonState.currentSection],
       });
+      updateModuleProgress(1, Math.round(((lessonState.completedSections.length + 1) / sections.length) * 100));
     }
     if (lessonState.currentSection < sections.length - 1) {
       setLessonState({ ...lessonState, currentSection: lessonState.currentSection + 1 });
     }
+  };
+
+  const handleModuleComplete = () => {
+    completeModule(1);
+    router.push("/course/module-2");
   };
 
   const submitExercise = () => {
@@ -136,6 +146,14 @@ export default function Module1Page() {
   const isSectionComplete = lessonState.currentSection < sections.length - 1 
     ? lessonState.completedSections.includes(lessonState.currentSection)
     : lessonState.exerciseSubmitted;
+
+  if (!isLoaded) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-500"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
@@ -243,7 +261,7 @@ export default function Module1Page() {
             </button>
           ) : lessonState.exerciseSubmitted ? (
             <button
-              onClick={() => router.push("/course/module-2")}
+              onClick={handleModuleComplete}
               className="px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-400 transition-colors"
             >
               Complete Module → Continue to Module 2

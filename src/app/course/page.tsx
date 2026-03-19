@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useProgress } from "@/hooks/useProgress";
 
 const modules = [
   {
@@ -40,19 +40,39 @@ const modules = [
     icon: "🎓",
     status: "available" as const,
   },
+  {
+    id: 6,
+    title: "Multi-Agent Systems",
+    description: "Design and orchestrate multiple AI agents working together on complex tasks.",
+    icon: "🤝",
+    status: "available" as const,
+  },
+  {
+    id: 7,
+    title: "Production Best Practices",
+    description: "Learn reliability, safety, and cost optimization for production AI systems.",
+    icon: "🚀",
+    status: "available" as const,
+  },
 ];
 
 export default function CoursePage() {
-  const [completedModules, setCompletedModules] = useState<number[]>([]);
+  const { progress, completeModule, isLoaded } = useProgress();
   const router = useRouter();
 
   const handleModuleComplete = (moduleId: number) => {
-    if (!completedModules.includes(moduleId)) {
-      setCompletedModules([...completedModules, moduleId]);
-    }
+    completeModule(moduleId);
   };
 
-  const progress = Math.round((completedModules.length / modules.length) * 100);
+  const progressPercent = Math.round((progress.completedModules.length / modules.length) * 100);
+
+  if (!isLoaded) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-500"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
@@ -63,12 +83,12 @@ export default function CoursePage() {
           </Link>
           <div className="flex items-center gap-4">
             <div className="text-sm text-slate-400">
-              Progress: <span className="text-amber-400 font-semibold">{progress}%</span>
+              Progress: <span className="text-amber-400 font-semibold">{progressPercent}%</span>
             </div>
             <div className="w-32 h-2 bg-slate-700 rounded-full overflow-hidden">
               <div 
                 className="h-full bg-gradient-to-r from-amber-500 to-orange-500 transition-all duration-500"
-                style={{ width: `${progress}%` }}
+                style={{ width: `${progressPercent}%` }}
               />
             </div>
           </div>
@@ -111,7 +131,7 @@ export default function CoursePage() {
                     <span className="text-sm font-mono text-slate-500">
                       MODULE {module.id}
                     </span>
-                    {completedModules.includes(module.id) && (
+                    {progress.completedModules.includes(module.id) && (
                       <span className="px-2 py-0.5 text-xs bg-green-500/20 text-green-400 rounded-full border border-green-500/30">
                         Completed
                       </span>
@@ -125,7 +145,7 @@ export default function CoursePage() {
                     href={`/course/module-${module.id}`}
                     className="inline-flex items-center gap-2 text-amber-400 hover:text-amber-300 font-medium"
                   >
-                    {completedModules.includes(module.id) ? "Review Module" : "Start Module"}
+                    {progress.completedModules.includes(module.id) ? "Review Module" : "Start Module"}
                     <span>→</span>
                   </Link>
                 </div>
@@ -149,20 +169,20 @@ export default function CoursePage() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => router.push("/course/module-5")}
-              disabled={completedModules.length < 4}
+              disabled={progress.completedModules.length < 4}
               className={`px-6 py-3 rounded-lg font-semibold transition-all ${
-                completedModules.length < 4
+                progress.completedModules.length < 4
                   ? "bg-slate-700 text-slate-500 cursor-not-allowed"
                   : "bg-amber-500 text-slate-900 hover:bg-amber-400 hover:shadow-lg hover:shadow-amber-500/25"
               }`}
             >
-              {completedModules.length < 4 
-                ? `Complete ${5 - completedModules.length} more module(s)`
+              {progress.completedModules.length < 4 
+                ? `Complete ${5 - progress.completedModules.length} more module(s)`
                 : "Begin Certification Assessment"
               }
             </button>
             <span className="text-sm text-slate-400">
-              {completedModules.length}/4 modules required
+              {progress.completedModules.length}/4 modules required
             </span>
           </div>
         </div>

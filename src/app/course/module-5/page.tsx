@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { useProgress } from "@/hooks/useProgress";
 
 interface Challenge {
   id: number;
@@ -65,12 +66,35 @@ const challenges: Challenge[] = [
 ];
 
 export default function Module5Page() {
+  const { progress, earnCertificate, setStudentName, completeModule, isLoaded } = useProgress();
   const [currentChallenge, setCurrentChallenge] = useState(0);
   const [answers, setAnswers] = useState<Record<number, string>>({});
   const [submitted, setSubmitted] = useState<Record<number, boolean>>({});
   const [scores, setScores] = useState<Record<number, number>>({});
   const [showHints, setShowHints] = useState<Record<number, boolean>>({});
-  const [certified, setCertified] = useState(false);
+  const [studentInputName, setStudentInputName] = useState(progress.studentName || "");
+
+  const allSubmitted = challenges.every(c => submitted[c.id]);
+  const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
+  const maxScore = challenges.reduce((a, b) => a + b.successCriteria.length, 0);
+  const passed = allSubmitted && totalScore >= maxScore * 0.7;
+  const alreadyCertified = progress.certificateEarned;
+
+  const handleGetCertificate = () => {
+    if (studentInputName.trim()) {
+      setStudentName(studentInputName.trim());
+      earnCertificate();
+      completeModule(5);
+    }
+  };
+
+  if (!isLoaded) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-amber-500"></div>
+      </div>
+    );
+  }
 
   const submitChallenge = (challengeId: number) => {
     const answer = answers[challengeId]?.toLowerCase() || "";
@@ -88,32 +112,68 @@ export default function Module5Page() {
     setSubmitted({ ...submitted, [challengeId]: true });
   };
 
-  const totalScore = Object.values(scores).reduce((a, b) => a + b, 0);
-  const maxScore = challenges.reduce((a, b) => a + b.successCriteria.length, 0);
-  const allSubmitted = challenges.every(c => submitted[c.id]);
-
-  if (allSubmitted && totalScore >= maxScore * 0.7) {
+  if (alreadyCertified || passed) {
+    const certDate = progress.certificateDate ? new Date(progress.certificateDate).toLocaleDateString() : new Date().toLocaleDateString();
+    const displayName = progress.studentName || studentInputName;
+    
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center">
-        <div className="max-w-2xl mx-auto p-8 text-center">
-          <div className="text-8xl mb-8">🎓</div>
-          <h1 className="text-4xl font-bold text-white mb-4">TAIC Certified!</h1>
-          <p className="text-xl text-slate-300 mb-8">
-            You&apos;ve demonstrated mastery in Technical AI Communication. You are now 
-            qualified to design and manage AI-driven workflows in any technical environment.
-          </p>
-          <div className="bg-slate-800/50 border border-amber-500/20 rounded-2xl p-6 mb-8">
-            <div className="text-3xl font-bold text-amber-400 mb-2">
-              {totalScore}/{maxScore}
-            </div>
-            <p className="text-slate-400">Final Score</p>
+      <div className="min-h-screen bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center p-8">
+        <div className="max-w-3xl w-full">
+          <div className="bg-gradient-to-br from-amber-500/20 to-orange-500/20 border-2 border-amber-500 rounded-3xl p-8 md:p-12 text-center relative overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-2 bg-gradient-to-r from-amber-500 via-yellow-500 to-orange-500"></div>
+            <div className="text-6xl mb-6">🎓</div>
+            <h1 className="text-3xl md:text-4xl font-bold text-white mb-2">TAIC Certified</h1>
+            <p className="text-amber-400 text-lg mb-8">Technical AI Communication Professional</p>
+            
+            {!progress.studentName ? (
+              <div className="mb-8">
+                <p className="text-slate-300 mb-4">Enter your name to generate your certificate:</p>
+                <input
+                  type="text"
+                  value={studentInputName}
+                  onChange={(e) => setStudentInputName(e.target.value)}
+                  placeholder="Your Full Name"
+                  className="w-full max-w-md px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white text-center text-lg focus:border-amber-500 focus:outline-none"
+                />
+                <button
+                  onClick={handleGetCertificate}
+                  disabled={!studentInputName.trim()}
+                  className="mt-4 px-8 py-3 bg-amber-500 text-slate-900 font-bold rounded-lg hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                >
+                  Generate Certificate
+                </button>
+              </div>
+            ) : (
+              <>
+                <div className="text-2xl md:text-3xl font-serif text-white mb-2">{displayName}</div>
+                <p className="text-slate-400 mb-6">has successfully completed the TAIC Certification</p>
+                <div className="flex justify-center gap-8 text-sm text-slate-400 mb-8">
+                  <div>
+                    <div className="text-amber-400 font-semibold">{passed ? totalScore : "---"}/{passed ? maxScore : "---"}</div>
+                    <div>Score</div>
+                  </div>
+                  <div>
+                    <div className="text-amber-400 font-semibold">{certDate}</div>
+                    <div>Date Earned</div>
+                  </div>
+                </div>
+                <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <button
+                    onClick={() => window.print()}
+                    className="px-6 py-3 bg-amber-500 text-slate-900 font-semibold rounded-lg hover:bg-amber-400 transition-colors"
+                  >
+                    Print Certificate
+                  </button>
+                  <Link
+                    href="/course"
+                    className="px-6 py-3 bg-slate-700 text-white font-semibold rounded-lg hover:bg-slate-600 transition-colors"
+                  >
+                    Return to Course Home
+                  </Link>
+                </div>
+              </>
+            )}
           </div>
-          <Link
-            href="/course"
-            className="inline-block px-8 py-4 bg-amber-500 text-slate-900 font-bold rounded-lg hover:bg-amber-400 transition-colors"
-          >
-            Return to Course Home
-          </Link>
         </div>
       </div>
     );
