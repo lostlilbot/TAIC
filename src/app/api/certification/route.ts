@@ -20,7 +20,7 @@ export async function POST(request: Request) {
 
     if (!studentName || !email) {
       return NextResponse.json(
-        { error: "Nombre y email son requeridos" },
+        { error: "Name and email are required" },
         { status: 400 }
       );
     }
@@ -41,7 +41,7 @@ export async function POST(request: Request) {
 
     return NextResponse.json({
       success: true,
-      message: "Submission Successful - Envío Exitoso",
+      message: "Submission Successful",
       submissionId: submission.id,
       passed,
       score,
@@ -49,7 +49,7 @@ export async function POST(request: Request) {
     });
   } catch {
     return NextResponse.json(
-      { error: "Error al procesar la solicitud" },
+      { error: "Error processing request" },
       { status: 500 }
     );
   }

@@ -153,23 +153,23 @@ export default function Module5Page() {
               <div className="mb-8">
                 {submissionSuccess && (
                   <div className="mb-6 p-4 bg-green-500/20 border border-green-500/40 rounded-lg">
-                    <p className="text-green-400 font-semibold">✓ Submission Successful - Envío Exitoso</p>
+                    <p className="text-green-400 font-semibold">✓ Submission Successful</p>
                     <p className="text-slate-300 text-sm">Your certification has been recorded.</p>
                   </div>
                 )}
-                <p className="text-slate-300 mb-4">Ingresa tu nombre y correo para generar tu certificado:</p>
+                <p className="text-slate-300 mb-4">Enter your name and email to generate your certificate:</p>
                 <input
                   type="text"
                   value={studentInputName}
                   onChange={(e) => setStudentInputName(e.target.value)}
-                  placeholder="Tu Nombre Completo"
+                  placeholder="Your Full Name"
                   className="w-full max-w-md px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white text-center text-lg focus:border-amber-500 focus:outline-none mb-3"
                 />
                 <input
                   type="email"
                   value={studentEmail}
                   onChange={(e) => setStudentEmail(e.target.value)}
-                  placeholder="tu@email.com"
+                  placeholder="your@email.com"
                   className="w-full max-w-md px-4 py-3 bg-slate-800 border border-slate-600 rounded-lg text-white text-center text-lg focus:border-amber-500 focus:outline-none mb-4"
                 />
                 <button
@@ -177,7 +177,7 @@ export default function Module5Page() {
                   disabled={!studentInputName.trim() || isSubmitting}
                   className="mt-2 px-8 py-3 bg-amber-500 text-slate-900 font-bold rounded-lg hover:bg-amber-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
                 >
-                  {isSubmitting ? "Enviando..." : "Generar Certificado"}
+                  {isSubmitting ? "Submitting..." : "Generate Certificate"}
                 </button>
               </div>
             ) : (

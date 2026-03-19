@@ -6,27 +6,27 @@ export default function Home() {
       <div className="max-w-6xl mx-auto px-4 md:px-6 py-12 md:py-20">
         <div className="text-center mb-12 md:mb-16">
           <div className="inline-block px-3 py-1 bg-amber-500/20 text-amber-400 rounded-full text-sm font-medium mb-4 md:mb-6 border border-amber-500/30">
-            TAIC Honduras - Estándares Globales de IA
+            TAIC Certification - Global AI Standards
           </div>
           <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold text-white mb-4 md:mb-6">
-            Comunica con <span className="text-amber-400">IA como</span> un Profesional
+            Master <span className="text-amber-400">Technical AI</span> Communication
           </h1>
           <p className="text-lg md:text-xl text-slate-300 max-w-2xl mx-auto mb-8 md:mb-10">
-            Transforma tu carrera con estándares globales de IA. Aprende la metodología TAIC 
-            y conviértete en un Arquitecto de IA certificado. Expertos locales, estándares globales.
+            Transform your career with global AI standards. Learn the TAIC methodology 
+            and become a certified AI Architect. Local experts, global standards.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3 md:gap-4">
             <Link
               href="/course"
               className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-amber-500 text-slate-900 font-bold rounded-lg hover:bg-amber-400 transition-all hover:shadow-lg hover:shadow-amber-500/25 text-center"
             >
-              Comenzar Certificación TAIC
+              Start TAIC Certification
             </Link>
             <Link
               href="#roadmap"
               className="w-full sm:w-auto px-6 md:px-8 py-3 md:py-4 bg-slate-700 text-white font-semibold rounded-lg hover:bg-slate-600 transition-colors text-center"
             >
-              Ver Roadmap
+              View Roadmap
             </Link>
           </div>
         </div>
@@ -34,30 +34,30 @@ export default function Home() {
         <div className="grid md:grid-cols-3 gap-4 md:gap-6 mt-12 md:mt-20">
           <div className="p-5 md:p-6 bg-slate-800/50 border border-slate-700 rounded-2xl">
             <div className="text-3xl mb-3 md:mb-4">🎯</div>
-            <h3 className="text-lg md:text-xl font-bold text-white mb-2">Framework de 5 Pilares</h3>
+            <h3 className="text-lg md:text-xl font-bold text-white mb-2">5 Pillars Framework</h3>
             <p className="text-slate-400 text-sm md:text-base">
-              Domina Tarea, Contexto, Persona, Formato y Ejemplos—la base de prompts precisos.
+              Master Task, Context, Persona, Format, and Examples—the backbone of precision prompts.
             </p>
           </div>
           <div className="p-5 md:p-6 bg-slate-800/50 border border-slate-700 rounded-2xl">
             <div className="text-3xl mb-3 md:mb-4">⚙️</div>
-            <h3 className="text-lg md:text-xl font-bold text-white mb-2">Ingeniería Agéntica</h3>
+            <h3 className="text-lg md:text-xl font-bold text-white mb-2">Agentic Engineering</h3>
             <p className="text-slate-400 text-sm md:text-base">
-              Diseña sistemas de IA que descomponen, ejecutan y verifican tareas complejas automáticamente.
+              Design AI systems that autonomously decompose, execute, and verify complex tasks.
             </p>
           </div>
-            <div className="p-5 md:p-6 bg-slate-800/50 border border-slate-700 rounded-2xl">
+          <div className="p-5 md:p-6 bg-slate-800/50 border border-slate-700 rounded-2xl">
             <div className="text-3xl mb-3 md:mb-4">🌊</div>
-            <h3 className="text-lg md:text-xl font-bold text-white mb-2">Vida Resiliente</h3>
+            <h3 className="text-lg md:text-xl font-bold text-white mb-2">Resilient Workflows</h3>
             <p className="text-slate-400 text-sm md:text-base">
-              Maneja alucinaciones de IA con mentalidad de resolución de problemas.
+              Handle AI hallucinations with a problem-solving mindset.
             </p>
           </div>
         </div>
 
         <div id="roadmap" className="mt-16 md:mt-20">
           <h2 className="text-2xl md:text-3xl font-bold text-white mb-6 md:mb-8 text-center">
-            Roadmap de Certificación TAIC
+            TAIC Certification Roadmap
           </h2>
           <div className="flex flex-col lg:flex-row gap-6 md:gap-8">
             <div className="flex-1">
@@ -65,39 +65,39 @@ export default function Home() {
                 {[
                   { 
                     step: 1, 
-                    title: "Fundamentos TAIC", 
-                    desc: "Module 1-2: De chatting a ingeniería agéntica + Framework de 5 Pilares",
-                    time: "2-3 horas"
+                    title: "TAIC Fundamentals", 
+                    desc: "Modules 1-2: From Chatting to Agentic Engineering + 5 Pillars Framework",
+                    time: "2-3 hours"
                   },
                   { 
                     step: 2, 
-                    title: "Flujos de Trabajo Agénticos", 
-                    desc: "Module 3: Descomposición, orquestación, verificación y bucles de aprendizaje",
-                    time: "2-3 horas"
+                    title: "Agentic Workflows", 
+                    desc: "Module 3: Decomposition, orchestration, verification, and learning loops",
+                    time: "2-3 hours"
                   },
                   { 
                     step: 3, 
-                    title: "Vida Resiliente", 
-                    desc: "Module 4: Detección y recuperación de alucinaciones",
-                    time: "1-2 horas"
+                    title: "Resilient Workflows", 
+                    desc: "Module 4: Hallucination detection and recovery",
+                    time: "1-2 hours"
                   },
                   { 
                     step: 4, 
-                    title: "Evaluación de Certificación", 
-                    desc: "Module 5: 3 desafíos prácticos con 70% para aprobar",
-                    time: "1-2 horas"
+                    title: "Certification Assessment", 
+                    desc: "Module 5: 3 practical challenges, 70% to pass",
+                    time: "1-2 hours"
                   },
                   { 
                     step: 5, 
-                    title: "Sistemas Multi-Agente", 
-                    desc: "Module 6: Diseño y orquestación de múltiples agentes de IA",
-                    time: "2-3 horas"
+                    title: "Multi-Agent Systems", 
+                    desc: "Module 6: Designing and orchestrating multiple AI agents",
+                    time: "2-3 hours"
                   },
                   { 
                     step: 6, 
-                    title: "Mejores Prácticas de Producción", 
-                    desc: "Module 7: Confiabilidad, seguridad y optimización de costos",
-                    time: "2-3 horas"
+                    title: "Production Best Practices", 
+                    desc: "Module 7: Reliability, security, and cost optimization",
+                    time: "2-3 hours"
                   },
                 ].map((item, idx) => (
                   <div key={item.step} className="relative flex gap-4">
@@ -120,23 +120,23 @@ export default function Home() {
             </div>
             <div className="lg:w-80 flex-shrink-0">
               <div className="bg-gradient-to-br from-amber-500/20 to-orange-500/20 border border-amber-500/30 rounded-2xl p-5 md:p-6 sticky top-24">
-                <h3 className="text-lg md:text-xl font-bold text-white mb-4">Tu Camino a la Certificación</h3>
+                <h3 className="text-lg md:text-xl font-bold text-white mb-4">Your Path to Certification</h3>
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between text-slate-300">
-                    <span>Duración Total Estimada:</span>
-                    <span className="text-amber-400 font-semibold">10-16 horas</span>
+                    <span>Total Estimated Duration:</span>
+                    <span className="text-amber-400 font-semibold">10-16 hours</span>
                   </div>
                   <div className="flex justify-between text-slate-300">
-                    <span>Módulos:</span>
-                    <span className="text-amber-400 font-semibold">7 módulos</span>
+                    <span>Modules:</span>
+                    <span className="text-amber-400 font-semibold">7 modules</span>
                   </div>
                   <div className="flex justify-between text-slate-300">
-                    <span>Ejercicios Interactivos:</span>
+                    <span>Interactive Exercises:</span>
                     <span className="text-amber-400 font-semibold">7+</span>
                   </div>
                   <div className="flex justify-between text-slate-300">
-                    <span>Examen Final:</span>
-                    <span className="text-amber-400 font-semibold">3 desafíos</span>
+                    <span>Final Exam:</span>
+                    <span className="text-amber-400 font-semibold">3 challenges</span>
                   </div>
                 </div>
                 <div className="mt-5 pt-5 border-t border-slate-700">
@@ -144,7 +144,7 @@ export default function Home() {
                     href="/course"
                     className="block w-full py-3 bg-amber-500 text-slate-900 font-bold rounded-lg hover:bg-amber-400 transition-colors text-center text-sm md:text-base"
                   >
-                    Iniciar Ahora
+                    Start Now
                   </Link>
                 </div>
               </div>
@@ -153,16 +153,16 @@ export default function Home() {
         </div>
 
         <div className="mt-16 md:mt-20 p-6 md:p-8 bg-slate-800/30 border border-slate-700 rounded-2xl">
-          <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">Módulos del Curso TAIC</h2>
+          <h2 className="text-xl md:text-2xl font-bold text-white mb-4 md:mb-6">TAIC Course Modules</h2>
           <div className="space-y-3 md:space-y-4">
             {[
-              { num: 1, title: "De Chatting a Ingeniería Agéntica" },
-              { num: 2, title: "El Framework de 5 Pilares" },
-              { num: 3, title: "Flujos de Trabajo Agénticos" },
-              { num: 4, title: "Vida Resiliente: Manejo de Alucinaciones" },
-              { num: 5, title: "Evaluación de Certificación" },
-              { num: 6, title: "Sistemas Multi-Agente" },
-              { num: 7, title: "Mejores Prácticas de Producción" },
+              { num: 1, title: "From Chatting to Agentic Engineering" },
+              { num: 2, title: "The 5 Pillars Framework" },
+              { num: 3, title: "Agentic Workflows" },
+              { num: 4, title: "Resilient Workflows: Handling Hallucinations" },
+              { num: 5, title: "Certification Assessment" },
+              { num: 6, title: "Multi-Agent Systems" },
+              { num: 7, title: "Production Best Practices" },
             ].map((module) => (
               <div key={module.num} className="flex items-center gap-3 md:gap-4 p-3 md:p-4 bg-slate-800/50 rounded-lg">
                 <span className="w-8 h-8 bg-amber-500/20 text-amber-400 rounded-full flex items-center justify-center font-bold text-sm">
@@ -176,7 +176,7 @@ export default function Home() {
 
         <div className="mt-12 md:mt-16 text-center">
           <p className="text-slate-500 text-sm">
-            Metodología TAIC Digital Twin • Currículo listo para certificación • Estándares Globales de IA para Expertos Locales
+            TAIC Digital Twin Methodology • Certification-Ready Curriculum • Global AI Standards for Local Experts
           </p>
         </div>
       </div>
